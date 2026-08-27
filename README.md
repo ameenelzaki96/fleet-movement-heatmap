@@ -10,9 +10,9 @@ telemetry and fuel records. Two pages:
 
 The two pages are cross-linked. Start at `index.html`.
 
-**Live pages** _(after enabling GitHub Pages, paste your links here):_
-- Single truck: `https://<your-username>.github.io/<repo>/`
-- Full fleet: `https://<your-username>.github.io/<repo>/fleet.html`
+**Live pages**
+- Single truck: `https://ameenelzaki96.github.io/fleet-movement-heatmap/`
+- Full fleet: `https://ameenelzaki96.github.io/fleet-movement-heatmap`
 
 ---
 

@@ -6,7 +6,7 @@ corridor**. Every GPS position it reported is aggregated into a presence-density
 alongside its headline operating stats.
 
 
-`[https://<your-username>.github.io/<repo>/](https://ameenelzaki96.github.io/fleet-movement-heatmap/)`_)_
+`https://ameenelzaki96.github.io/fleet-movement-heatmap/`_)_
 
 ---
 

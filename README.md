@@ -1,51 +1,43 @@
-# Fleet Movement Heat Map — Top Fuel Consumer
+# Fleet Fuel & Movement Analytics (anonymized)
 
-An anonymized, interactive heat map of the single **highest fuel-consuming vehicle** in a
-~4,000-vehicle fleet-telematics operation — a heavy truck running the **Riyadh–Jeddah
-corridor**. Every GPS position it reported is aggregated into a presence-density heat layer,
-alongside its headline operating stats.
+Interactive, anonymized dashboards for a logistics operator's trucks — built from GPS
+telemetry and fuel records. Two pages:
 
-**Live page:** _(after enabling GitHub Pages, paste your link here — e.g._
-`https://<your-username>.github.io/<repo>/`_)_
+| Page | What it shows |
+|------|---------------|
+| **`index.html`** | The single **highest fuel-consuming vehicle** in the fleet — a heavy truck on the Riyadh–Jeddah corridor: movement heat map + operating stats (fuel, distance, idling, Riyadh⇄Jeddah trips). |
+| **`fleet.html`** | **All trucks** of that operator on one map — combined heat + per-truck trails you can toggle, KPI boxes that filter to the selected truck(s), a weight-class breakdown (heavy شاحنة vs light pickups), a per-truck fuel-economy table, and the fleet's repeating corridors. |
+
+The two pages are cross-linked. Start at `index.html`.
+
+**Live pages** _(after enabling GitHub Pages, paste your links here):_
+- Single truck: `https://<your-username>.github.io/<repo>/`
+- Full fleet: `https://<your-username>.github.io/<repo>/fleet.html`
 
 ---
 
-## Headline numbers (Apr–Aug 2026)
+## Highlights
 
-| Metric | Value |
-|--------|------:|
-| Riyadh ⇄ Jeddah legs | 24 (≈ 12 round trips) |
-| Idling hours (total) | 173 |
-| Driving hours (total) | 1,076 |
-| Recorded trips | 791 |
-| Distance driven | 32,526 km |
-| Fuel filled | 3,197.7 L |
-
-The corridor accounts for ~22,800 km of the 32,526 km driven — this truck's main job is
-long-haul Riyadh ↔ Jeddah.
+- **Top consumer:** one heavy truck — 3,197 L, 32,526 km, **24 Riyadh⇄Jeddah legs (≈12 round trips)**, 173 idling hours (Apr–Aug 2026).
+- **Fleet corridors:** Riyadh ⇄ Jeddah dominates (37 legs), then Riyadh ⇄ Makkah and Jeddah ⇄ Makkah.
+- **Two-tier operation:** the heavy trucks run the long-haul corridor (~9.7 L/100km, low idling); the light pickups do local Riyadh duty (far more idling per km).
+- **Efficiency finding:** swapping city trucks onto the corridor would **not** save fuel — the waste is city idling and the roles need different weight classes. The real levers are cutting idling and maximizing corridor load.
 
 ## How it was built
 
-- **Top consumer** — the vehicle with the highest total litres filled across the whole fleet
-  (sum of fuel entries).
-- **Heat map** — ~508,000 GPS points from the telemetry history, aggregated onto a ~110 m
-  grid and weighted by dwell density.
-- **Riyadh ⇄ Jeddah legs** — each GPS point tagged by city (bounding boxes for Riyadh and
-  Jeddah); the timeline is reduced to a sequence of city visits and every crossing counted.
-- **Idling / driving hours, trips, distance** — summed from the vehicle's completed trips in
-  the analytics store.
+- **Top consumer** = highest total litres filled across the fleet.
+- **Heat maps** = GPS positions aggregated onto a ~110 m grid, weighted by dwell density.
+- **Corridors** = each GPS point tagged by city zone; the timeline reduced to a sequence of city visits and every crossing counted.
+- **Fuel economy** = litres filled ÷ GPS trip distance; idling/driving hours summed from completed trips.
 
 ## Privacy
 
-This is a **public, anonymized** page:
-
-- No plate number, company name, VIN, or device IMEI.
-- Coordinates are coarsened to ~110 m so no exact depot or stop is pinpointed.
-- Only aggregate operating figures are shown.
+Fully anonymized: no plate numbers, company names, VINs, or device IMEIs. Coordinates are
+coarsened to ~110 m so no exact depot or stop is pinpointed. Only aggregate figures are shown.
 
 ## Notes
 
-- Leaflet and the heat-map plugin are **inlined** in the page, so it renders with no external
-  script dependency. The base map **tiles** load from OpenStreetMap at view time, so the page
-  needs an internet connection to show streets (the heat layer still draws without them).
+- Leaflet and the heat-map plugin are **inlined**, so the pages render with no external script
+  dependency. Base-map **tiles** load from OpenStreetMap at view time (needs an internet
+  connection to show streets; the heat/points still draw without them).
 - Figures are a point-in-time snapshot and are estimates for operational insight.

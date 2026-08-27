@@ -12,7 +12,7 @@ The two pages are cross-linked. Start at `index.html`.
 
 **Live pages**
 - Single truck: `https://ameenelzaki96.github.io/fleet-movement-heatmap/`
-- Full fleet: `https://ameenelzaki96.github.io/fleet-movement-heatmap/`
+- Full fleet: `https://ameenelzaki96.github.io/fleet-movement-heatmap/fleet.html`
 
 ---
 
